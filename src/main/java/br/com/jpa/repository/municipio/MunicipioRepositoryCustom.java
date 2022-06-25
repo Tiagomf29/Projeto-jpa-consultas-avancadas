@@ -60,7 +60,7 @@ public class MunicipioRepositoryCustom {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Municipio> criteriaQuery = criteriaBuilder.createQuery(Municipio.class);
 		Root<Municipio> root = criteriaQuery.from(Municipio.class);
-		
+		root.fetch("estado").fetch("regiao");
 		criteriaQuery.select(root);
 		
 		TypedQuery<Municipio> lista = entityManager.createQuery(criteriaQuery);
